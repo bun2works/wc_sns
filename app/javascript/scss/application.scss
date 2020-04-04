@@ -1,10 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
+.nav--border {
+  background-color: rgba(15, 65, 129, 0.8);
+  border-bottom: 1px solid red;
+  color: #dfdfdf;
+}
+
 .footer--bar {
   background-color: rgba(15, 65, 129, 0.8);
   border-top: 1px solid red;
-  border-bottom: 1px solid red;
   height: 50px;
   text-align: right;
   padding-right: 10px;
