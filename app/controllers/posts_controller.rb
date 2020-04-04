@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.save
-    redirect_to @post
+    redirect_to @post, notice: 'スレッドを作成しました'
   end
 
   def show
