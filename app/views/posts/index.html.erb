@@ -1,0 +1,14 @@
+<div class="col-6 mx-auto">
+  <% @posts.each do |post| %>
+    <div class="card mb-5">
+      <%= link_to post do %>
+        <div class="card-title">
+          <p><%= truncate(post.title, length: 30) %></p>
+        </div>
+      <% end %>
+      <div class="card-body">
+        <p><%= truncate(post.body, length: 50) %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
