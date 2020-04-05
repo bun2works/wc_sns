@@ -1,26 +1,27 @@
-<!-- navber -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark py-0 nav--border" style="background-color: rgba(15, 65, 129, 0.8)">
-  <a class="navbar-brand" href="#"><img src="img/logo/wcLogo.png" alt="navber"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#schedule--title">≫ 大会情報</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#team--hp" tabindex="-1" aria-disabled="true">≫ 大会参加チームHP</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#school--title" tabindex="-1" aria-disabled="true">≫ バレーボール教室</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#joint--corp" tabindex="-1" aria-disabled="true">≫ 協賛・協力・旧HP</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="https://forms.gle/kCbjAqdLpXyqRadz7" target="_blank" tabindex="-1" aria-disabled="true">≫ コンタクト</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark py-0 nav--border">
+  <div class="container">
+    <%# ロゴ部分 %>
+    <div class="nav-item">
+      <a class="navbar-brand" href="/"><img src="/assets/wcLogo.png" alt="navber"></a>
+    </div>
+    <%# メニュー格納時のボタン %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%# メニュー %>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <% if team_signed_in? %>
+        <%= link_to edit_team_registration_path, class: "nav-item mr-4 fa--light" do %>
+          <i class="fas fa-users fa-lg"></i> <%= current_team.name %>
+        <% end %>
+      <% else %>
+        <%= link_to new_team_session_path, class: "nav-item mr-4 fa--light" do %>
+          <i class="fas fa-user-times fa-lg"></i>
+        <% end %>
+      <% end %>
+      <form class="nav-item form-inline mb-2 mb-lg-0" action="/" accept-charset="UTF-8" method="get">
+        <input type="text" name="q" id="q" value="" class="form-control" placeholder="検索" >
+      </form>
+    </div>
+  </nav>
+</div>
