@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to posts_path, notice: "レスポンスを投稿しました。"
     else
-      @posts = Post.order(updated_at: :desc)
+      @posts = Post.order(updated_at: :desc).page(params[:page]).per(10)
       render template: "posts/index"
     end
   end

@@ -2,4 +2,5 @@
     <%= render "shared/errors", obj: @comment %>
     <h4 class="text-center"><%= t ".title" %></h4>
     <%= render @posts %>
+    <%= paginate @posts %>
 </div>
