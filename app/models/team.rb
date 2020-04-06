@@ -4,6 +4,7 @@ class Team < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one_attached :team_image
+  has_many :posts, dependent: :destroy
   validates :name, presence: true, length: {maximum: 30}, uniqueness: true
   validates :representative, presence: true, length: {maximum: 20}
   validates :homepage, length: {maximum: 100}, uniqueness: true
