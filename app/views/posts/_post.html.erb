@@ -15,5 +15,10 @@
   <% end %>
   <div class="card-body">
     <p><%= truncate(post.body, length: 50) %></p>
+    <%= form_with model: @comment, url: comments_path, class: "form-group row mx-auto ", local: true do |f| %>
+      <%= f.hidden_field :post_id, value: post.id %>
+      <%= f.text_area :body, class: "col-8 form-control" %>
+      <%= f.submit t(".submit"), class: "col-4" %>
+    <% end %>
   </div>
 </div>
