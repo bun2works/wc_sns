@@ -1,4 +1,4 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark py-0 nav--border">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark py-0 mb-5 nav--border">
   <div class="container">
     <%# ロゴ部分 %>
     <div class="nav-item">
@@ -16,7 +16,7 @@
         <% end %>
       <% else %>
         <%= link_to new_team_session_path, class: "nav-item mr-4 fa--light" do %>
-          <i class="fas fa-user-times fa-lg"></i>
+          <i class="fas fa-user-times fa-lg"></i> ログイン
         <% end %>
       <% end %>
       <form class="nav-item form-inline mb-2 mb-lg-0" action="/" accept-charset="UTF-8" method="get">

@@ -1,0 +1,13 @@
+ja:
+  posts:
+    form:
+      back: 戻る
+      post: 作成する
+    index: 
+      title: スレッド一覧
+    new:
+      title: スレッド作成
+    show:
+      title: スレッド詳細
+      edit: 編集する
+      delete: スレッド削除
