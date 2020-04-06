@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_team!
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.order(updated_at: :desc).page(params[:page]).per(10)
+    @posts = Post.order(updated_at: :desc).page(params[:page]).per(10).includes(team: [image_attachment: :blob], comments: [team: [image_attachment: :blob]])
     @comment = Comment.new
   end
 
@@ -21,6 +21,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.includes(comments: [team: [image_attachment: :blob]], team: [image_attachment: :blob]).find(params[:id])
     @comment = Comment.new
   end
 
