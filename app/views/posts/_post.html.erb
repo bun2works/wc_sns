@@ -15,6 +15,17 @@
   <% end %>
   <div class="card-body">
     <p><%= truncate(post.body, length: 50) %></p>
+
+    <hr>
+
+    <% post.comments.last(3).each do |comment| %>
+      <p>
+        <%= image_tag comment.team.image.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
+        <%= comment.team.name %>
+        <%= truncate(comment.response, length: 30) %>
+      </p>
+    <% end %>
+
     <%= form_with model: @comment, url: comments_path, class: "form-group row mx-auto ", local: true do |f| %>
       <%= f.hidden_field :post_id, value: post.id %>
       <%= f.text_area :body, class: "col-8 form-control" %>
