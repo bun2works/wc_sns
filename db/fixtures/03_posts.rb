@@ -1,8 +1,8 @@
 Faker::Config.locale = :ja
 
 unless Rails.env.production?
-  # 10件のデータを用意する
-  POST_MAX = 10
+  # 50件のデータを用意する
+  POST_MAX = 50
 
   # Proc.newでその後の配列をオブジェクトとしてpost_attrsに代入
   post_attrs = Proc.new do
@@ -11,7 +11,8 @@ unless Rails.env.production?
       { id: idx + 1,
         # Fakerを使って文言を用意
         title: Faker::Lorem.paragraph,
-        body: Faker::Lorem.paragraph
+        body: Faker::Lorem.paragraph,
+        team_id: Team.pluck(:id).sample
       }
     end
   end
