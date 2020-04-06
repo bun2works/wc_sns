@@ -1,4 +1,4 @@
-# Faker::Config.locale = :ja
+Faker::Config.locale = :ja
 
 unless Rails.env.production?
   # 10件のデータを用意する

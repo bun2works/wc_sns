@@ -1,4 +1,13 @@
-<div class="col-lg-8 mx-auto">
+<div class="col-lg-12 mx-auto">
+  <div class="">
+    <% if @post.team.image.attached? %>
+      <%= image_tag @post.team.image.variant(resize_to_fill: [32, 32]).processed, class: "img-thumbnail rounded-circle" %>
+    <% else %>
+      <%= image_tag "no_image", class: "img-thumbnail rounded-circle" %>
+    <% end %>
+    <%= @post.team.name %>
+    <hr>
+  </div>
   <div class="card mb-3">
     <div class="row no-gutters">
       <div class="col-lg-11">

@@ -1,4 +1,13 @@
 <div class="card mb-5">
+  <div class="card-header bg-transparent">
+    <% if post.team.image.attached? %>
+      <%= image_tag post.team.image.variant(resize_to_fill: [60, 60]).processed, class: "img-fluid rounded-circle" %>
+    <% else %>
+      <%= image_tag "no_image", class: "img-fluid rounded-circle" %>
+    <% end %>
+    <%= post.team.name %>
+  </div>
+
   <%= link_to post do %>
     <div class="card-title">
       <p><%= truncate(post.title, length: 30) %></p>

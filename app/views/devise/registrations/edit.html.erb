@@ -3,8 +3,8 @@
     <h1 class="text-center logo">Profile</h1>
   </div>
 
-  <% if current_team.team_image.attached? %>
-    <%= image_tag current_team.team_image.variant(resize_to_fill: [600, 400]).processed, class: "img-fluid" %>
+  <% if current_team.image.attached? %>
+    <%= image_tag current_team.image.variant(resize_to_fill: [600, 400]).processed, class: "img-fluid" %>
   <% else %>
     <%= image_tag "no_image", class: "img-fluid" %>
   <% end %>
@@ -13,8 +13,8 @@
     <%= render "devise/shared/error_messages", resource: resource %>
 
     <div class="form-group">
-      <%= f.label :team_image %>
-      <%= f.file_field :team_image, class: "form-control" %>
+      <%= f.label :image %>
+      <%= f.file_field :image, class: "form-control" %>
     </div>
 
     <div class="form-group">
