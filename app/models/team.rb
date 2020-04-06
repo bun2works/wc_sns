@@ -5,6 +5,7 @@ class Team < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one_attached :image
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :name, presence: true, length: {maximum: 30}, uniqueness: true
   validates :representative, presence: true, length: {maximum: 20}
   validates :homepage, length: {maximum: 100}, uniqueness: true

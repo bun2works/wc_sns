@@ -4,6 +4,8 @@ ja:
       post:
         title: スレッドタイトル
         body: 本文
+      comment:
+        response: レスポンス
       team:
         email: メールアドレス
         homepage: ホームページ
