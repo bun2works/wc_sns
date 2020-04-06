@@ -23,6 +23,9 @@
         <%= image_tag comment.team.image.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
         <%= comment.team.name %>
         <%= truncate(comment.response, length: 30) %>
+        <% if current_team.id == comment.team.id %>
+          <%= link_to t(".delete"), comment_path(comment), method: :delete, data: {confirm: '投稿を削除してよろしいですか？'} %>
+        <% end %>
       </p>
     <% end %>
 

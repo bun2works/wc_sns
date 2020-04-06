@@ -8,6 +8,7 @@ ja:
     new:
       title: スレッド作成
     post:
+      delete: 削除
       submit: レスポンス投稿
     show:
       title: スレッド詳細
