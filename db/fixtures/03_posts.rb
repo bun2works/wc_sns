@@ -1,8 +1,8 @@
 Faker::Config.locale = :ja
 
 unless Rails.env.production?
-  # 50件のデータを用意する
-  POST_MAX = 50
+  # 400件のデータを用意する
+  POST_MAX = 400
 
   # Proc.newでその後の配列をオブジェクトとしてpost_attrsに代入
   post_attrs = Proc.new do

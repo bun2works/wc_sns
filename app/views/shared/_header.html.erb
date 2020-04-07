@@ -11,7 +11,7 @@
     <%# メニュー %>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <% if team_signed_in? %>
-        <%= link_to edit_team_registration_path, class: "nav-item mr-4 fa--light" do %>
+        <%= link_to team_path(current_team), class: "nav-item mr-4 fa--light" do %>
           <i class="fas fa-users fa-lg"></i> <%= current_team.name %>
         <% end %>
       <% else %>

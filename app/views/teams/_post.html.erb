@@ -1,0 +1,18 @@
+<div class="col-4 p-1">
+  <div class="card">
+    <%= link_to post do %>
+      <div class="card-title">
+        <p><%= truncate(post.title, length: 30) %></p>
+      </div>
+    <% end %>
+    <hr>
+    <p>レスポンス: <%= post.comments.count %> 件</p>
+    <%# <%= post.comments.last(2).each do |comment| %>
+      <%# <p> %>
+        <%# <%= image_tag comment.team.image.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
+        <%# <%= comment.team.name %>
+        <%# <%= truncate(comment.response, length: 30) %>
+      <%# </p> %>
+    <%# <% end %>
+  </div>
+</div>
