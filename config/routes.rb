@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :teams
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  devise_for :admin_users, controllers: {
+    sessions:      'admin_users/sessions',
+    passwords:     'admin_users/passwords',
+    registrations: 'admin_users/registrations'
+  }
+  devise_for :teams, controllers: {
+    sessions:      'teams/sessions',
+    passwords:     'teams/passwords',
+    registrations: 'teams/registrations'
+  }  
   resources :posts
   resources :comments, only: [:create, :destroy]
   resources :teams, only: :show

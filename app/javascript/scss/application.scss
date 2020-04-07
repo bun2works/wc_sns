@@ -1,6 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 
+//コンテンツが少ない場合、footerを最下部に押し出し
+html {
+  height: 100%
+}
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1;
+}
+
+nav.pagination {
+  display: none;
+}
+
+.user-box {
+  padding: 30px;
+  border: 1px solid #dcdcdc;
+  background-color: #f8f8ff;
+}
+
 .nav--border {
   background-color: rgba(15, 65, 129, 0.8);
   border-bottom: 1px solid red;
@@ -20,8 +43,4 @@
 
 .fa--light {
   color: #dfdfdf;
-}
-
-nav.pagination {
-  display: none;
 }

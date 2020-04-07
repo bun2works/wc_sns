@@ -1,6 +1,10 @@
 ja:
   activerecord:
     attributes:
+      admin_user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
       post:
         title: スレッドタイトル
         body: 本文

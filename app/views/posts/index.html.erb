@@ -14,7 +14,7 @@
       scrollPosition = $(window).height() + $(window).scrollTop();
 
       // 画面のスクロールが下部10%以下になったら
-      if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
+      if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.5) {
         // .postに対し、jscrollを発火
         $('.post').jscroll({
           // 読込中の表示
