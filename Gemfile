@@ -37,6 +37,11 @@ gem 'rails_admin'
 gem 'rails_admin-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 
+group :production do
+  gem 'pg', '~> 0.18'
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
