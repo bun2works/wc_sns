@@ -20,25 +20,25 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.includes(comments: [team: [image_attachment: :blob]], team: [image_attachment: :blob]).find(params[:id])
+    @post = Post.with_team_and_comment.find(params[:id])
     @comment = Comment.new
   end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def update
-    if @post.update(post_params)
-      redirect_to @post, notice: "スレッドを更新しました。"
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   if @post.update(post_params)
+  #     redirect_to @post, notice: "スレッドを更新しました。"
+  #   else
+  #     render :edit
+  #   end
+  # end
 
-  def destroy
-    @post.destroy
-    redirect_to posts_path, notice: "スレッドを削除しました。"
-  end
+  # def destroy
+  #   @post.destroy
+  #   redirect_to posts_path, notice: "スレッドを削除しました。"
+  # end
 
   private
 

@@ -1,18 +1,29 @@
-<div class="col-4 p-1">
-  <div class="card">
+<div class="card col-12 mb-5">
+  <div class="card-header bg-transparent ">
+    <div class="row justify-content-between px-3">
+      <p>タイトル</p>
+      <p><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+    </div>
     <%= link_to post do %>
-      <div class="card-title">
-        <p><%= truncate(post.title, length: 30) %></p>
-      </div>
+        <p class="ml-4"><%= post.title %></p>
     <% end %>
-    <hr>
-    <p>レスポンス: <%= post.comments.count %> 件</p>
-    <%# <%= post.comments.last(2).each do |comment| %>
-      <%# <p> %>
-        <%# <%= image_tag comment.team.image.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
-        <%# <%= comment.team.name %>
-        <%# <%= truncate(comment.response, length: 30) %>
-      <%# </p> %>
-    <%# <% end %>
+  </div>
+
+  <div class="card-body">
+    <p>最新コメント (コメント全<%= post.comments.count %>件)</p>
+    <% post.comments.last(1).each do |comment| %>
+      <div class="row justify-content-between align-items-baseline px-3">
+        <div>
+          <% if comment.team.image.attached? %>
+            <%= image_tag comment.team.image.variant(resize_to_fill: [30, 30]).processed, class: "img-fluid rounded-circle mr-1" %>
+            <% else %>
+              <i class="fas fa-user-circle fa-2x mr-1"></i>
+            <% end %>
+          <%= comment.team.name %>
+        </div>
+        <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+      </div>
+      <p class="mx-4"><%= truncate(comment.response, length: 50) %></p>
+    <% end %>
   </div>
 </div>

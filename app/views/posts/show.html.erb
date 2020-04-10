@@ -1,49 +1,59 @@
-<div class="col-lg-12 mx-auto">
-  <h4 class="text-center"><%= t ".title" %></h4>
-  <div class="">
-    <% if @post.team.image.attached? %>
-      <%= image_tag @post.team.image.variant(resize_to_fill: [32, 32]).processed, class: "img-thumbnail rounded-circle" %>
-    <% else %>
-      <%= image_tag "no_image", class: "img-thumbnail rounded-circle" %>
-    <% end %>
-    <%= @post.team.name %>
-    <hr>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-5 mb-4">
+    <%= link_to t(".teams_index"), teams_path, class: "btn-lg btn-secondary col-3 text-center" %>
+    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
+    <div class="btn-lg btn-primary col-3 text-center"><%= t(".title") %></div>
   </div>
-  <div class="card mb-3">
-    <div class="row no-gutters">
-      <div class="col-lg-11">
-        <div class="card-title">
-          <%= simple_format (@post.title) %>
-        </div>
-        <div class="card-body">
-          <%= simple_format (@post.body) %>
 
-          <% @post.comments.each do |comment| %>
-            <p>
-              <%= image_tag comment.team.image.variant(resize_to_fill: [20, 20]).processed, class: "img-fluid rounded-circle" %>
-              <%= comment.team.name %>
-              <%= comment.response %>
-            </p>
-          <% end %>
-        </div>
-
-        <%= form_with model: @comment, url: comments_path, class: "row mx-auto ", local: true do |f| %>
-          <%= f.hidden_field :post_id, value: @post.id %>
-          <%= f.text_field :response, class: "col-8 form-control" %>
-          <%= f.submit t(".submit"), class: "col-4" %>
+  <div class="container-fuluid">
+    <div class="row mb-2">
+      <%= link_to team_path(@post.team) do %>
+        <% if @post.team.image.attached? %>
+          <%= image_tag @post.team.image.variant(resize_to_fill: [40, 40]).processed, class: "img-fluid rounded-circle mr-2" %>
+        <% else %>
+          <i class="fas fa-user-circle fa-lg"></i>
         <% end %>
-
-      </div>
+          <%= @post.team.name %>
+      <% end %>
     </div>
   </div>
-  <% if team_signed_in? && current_team.id == @post.team_id %>
-    <p>
-      <%= link_to t(".edit"), edit_post_path(@post), method: :get, class: "btn btn-block btn-primary col-lg-11 mx-auto" %>
-    </p>
-    <p>
-      <%= button_tag t(".delete"), class: "btn btn-block btn-warning col-lg-11 mx-auto", data: { toggle: "modal", target: "#delete-post" } %>
-    </p>
-  <% end %>
-</div>
 
-<%= render "delete_modal", post: @post %>
+  <div class="card mb-5">
+    <div class="card-header bg-transparent ">
+      <div class="row justify-content-between px-3">
+        <p>タイトル</p>
+        <p><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      </div>
+      <p class="mx-4"><%= @post.title %></p>
+    </div>
+
+    <div class="card-body">
+      <p>本文</p>
+      <div class="mx-4"><%= simple_format (@post.body) %></div>
+      <hr>
+      <p>コメント (全<%= @post.comments.count %>件</p>
+      <% @post.comments.each do |comment| %>
+        <div class="row justify-content-between align-items-baseline px-3">
+          <div>
+            <% if comment.team.image.attached? %>
+              <%= image_tag comment.team.image.variant(resize_to_fill: [30, 30]).processed, class: "img-fluid rounded-circle mr-1" %>
+            <% else %>
+              <i class="fas fa-user-circle fa-2x mr-1"></i>
+            <% end %>
+            <%= comment.team.name %>
+          </div>
+          <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+        </div>
+        <p class="mx-4"><%= comment.response %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="mb-5">
+    <%= form_with model: @comment, url: comments_path, class: "row mx-auto ", local: true do |f| %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.text_field :response, class: "col-10 form-control", placeholder: "コメント投稿" %>
+      <%= f.submit t(".submit"), class: "col-2" %>
+    <% end %>
+  </div>
+</div>

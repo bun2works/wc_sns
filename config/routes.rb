@@ -9,12 +9,13 @@ Rails.application.routes.draw do
     sessions:      'teams/sessions',
     passwords:     'teams/passwords',
     registrations: 'teams/registrations'
-  }  
-  resources :posts
-  resources :comments, only: [:create, :destroy]
-  resources :teams, only: :show
+  }
+
+  resources :posts, only: [:create, :index, :new, :show]
+  resources :comments, only: :create
+  resources :teams, only: [:index, :show]
 
   get 'comments' => redirect('posts')
-  root 'posts#index'
+  root 'teams#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

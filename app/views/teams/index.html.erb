@@ -1,0 +1,26 @@
+<div class="container-fluid mb-5">
+  <div class="row justify-content-center mt-5 mb-4">
+    <%= link_to t(".title"), teams_path, class: "btn-lg btn-primary col-3 text-center" %>
+    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
+    <%= link_to t(".my_team"), team_path(current_team.id), class: "btn-lg btn-secondary col-3 text-center" %>
+  </div>
+
+  <div class="row row-cols-sm-2 row-cols-lg-3">
+    <% @teams.each do |team| %>
+      <div class="card">
+        <%= link_to team do %>
+          <% if team.image.attached? %>
+            <%= image_tag team.image.variant(resize_to_fill: [600, 400]).processed, class: "card-img-top img-fluid" %>
+          <% else %>
+            <%= image_tag "no_image", class: "card-img-top img-fluid" %>
+          <% end %>
+        <% end %>
+        <div class="card-body">
+        <h5 class="card-title"><%= team.name %></h5>
+        <p class="card-text"><%= team.location_and_day %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="my-4"><%= paginate @teams %></div>
+</div>

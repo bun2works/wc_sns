@@ -1,40 +1,40 @@
-<div class="col-lg-8 mx-auto">
-  <div class="row pb-5">
-    <div class="col-4 text-center">
-      <%= image_tag @team.image.variant(resize_to_fill: [150, 150]).processed, class: "img-thumbnail rounded-circle" %>
-    </div>
-    <div class="col-8">
-      <h1><%= @team.name %></h1>
-      <%= @team.introduction %>
-      <% if @team.id == current_team.id %>
-        <p><%= link_to t(".edit"), edit_team_registration_path(@team) %></p>
-      <% end %>
-    </div>
+<div class="container-fluid">
+  <div class="row justify-content-center mt-5 mb-4">
+    <%= link_to t(".teams_index"), teams_path, class: "btn-lg btn-secondary col-3 text-center" %>
+    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
+    <div class="btn-lg btn-primary col-3 text-center"><%= t(".title") %></div>
   </div>
-  <div class="post">
+
+  <div class="col-lg-10 mx-auto">
+    <div class="row my-5">
+      <div class="col-4">
+        <% if @team.image.attached? %>
+          <%= image_tag @team.image.variant(resize_to_fill: [600, 400]).processed, class: "img-fluid rounded shadow mb-2" %>
+        <% else %>
+          <%= image_tag "no_image", class: "img-fluid rounded mb-2" %>
+        <% end %>
+        <div>
+          <% if @team.id == current_team.id %>
+            <%= link_to t(".edit"), edit_team_registration_path(@team), class: "btn-sm btn-block btn-primary text-center" %>
+          <% end %>
+        </div>
+      </div>  
+
+      <div class="container col-8">
+        <h3 class="mb-4"><%= @team.name %></h3>
+        <p>代表者: <%= @team.representative %></p>
+        <div class="row col-12">
+          <p>詳　細:</p>
+          <p><%= simple_format (@team.introduction), class: "ml-1" %></p>
+        </div>
+        <p>活動日: <%= @team.location_and_day %></p>
+        <p>Ｈ　Ｐ: <%= link_to @team.homepage, @team.homepage, target: :_blank %></p>
+      </div>
+    </div>
+    <h4 class="mb-4"><%= t ".title" %></h4>
     <div class="row">
       <%= render partial: "teams/post", collection: @posts %>
       <%= paginate @posts %>
     </div>
   </div>
 </div>
-
-<script>
-  $(window).on('scroll', function() {
-      // 画面スクロールの判定用の変数を用意
-      scrollHeight = $(document).height();
-      scrollPosition = $(window).height() + $(window).scrollTop();
-      // 画面のスクロールが下部10%以下になったら
-      if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.1) {
-        // .postに対し、jscrollを発火
-        $('.post').jscroll({
-          // 読込中の表示
-          loadingHtml: '<div class="text-center"><img src="http://www.mytreedb.com/uploads/mytreedb/loader/ajax_loader_blue_48.gif">読み込み中</div>',
-          // 読み込む内容があるリンク
-          nextSelector: 'span.next a',
-          // 読み込む内容がある場所
-          contentSelector: '.post',
-        });
-      }
-  });
-</script>
