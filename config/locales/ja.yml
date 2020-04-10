@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    attributes:
+      admin_user:
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード(確認)
+      post:
+        title: スレッドタイトル
+        body: 本文
+      comment:
+        response: コメント
+      team:
+        current_password: 現在のパスワード
+        email: メールアドレス
+        homepage: ホームページ
+        image: チーム画像
+        introduction: チーム紹介
+        location_and_day: 活動場所・曜日
+        name: チーム名
+        password: パスワード
+        password_confirmation: パスワード(確認)
+        representative: 代表者名

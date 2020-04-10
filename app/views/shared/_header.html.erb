@@ -1,0 +1,27 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark py-0 nav--border">
+  <div class="container">
+    <%# ロゴ部分 %>
+    <div class="nav-item">
+      <a class="navbar-brand" href="http://neezexp.sakura.ne.jp/wcHp/wcTop.html" target="aboutblank"><img src="/assets/wcLogo.png" alt="navber"></a>
+    </div>
+    <%# メニュー格納時のボタン %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%# メニュー %>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <% if team_signed_in? %>
+        <%= link_to team_path(current_team), class: "nav-item mr-4 fa--light" do %>
+          <i class="fas fa-users fa-lg"></i> <%= current_team.name %>
+        <% end %>
+      <% else %>
+        <%= link_to new_team_session_path, class: "nav-item mr-4 fa--light" do %>
+          <i class="fas fa-user-times fa-lg"></i> ログイン
+        <% end %>
+      <% end %>
+      <%= search_form_for @q ,class: "nav-item form-inline mb-2 mb-lg-0" do |f|  %>
+        <%= f.search_field :title_or_body_or_team_name_or_comments_response_cont, class: "form-control", placeholder: "検索" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

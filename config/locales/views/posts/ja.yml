@@ -1,0 +1,24 @@
+ja:
+  posts:
+    form:
+      back: 戻る
+      post: 作成する
+    index: 
+      create_post: スレッド作成
+      teams_index: チーム一覧
+      title: スレッド一覧
+    new:
+      posts_index: スレッド一覧
+      teams_index: チーム一覧
+      title: スレッド作成
+    post:
+      delete: 削除
+      submit: 投稿
+    show:
+      create_post: スレッド作成
+      delete: スレッド削除
+      edit: 編集
+      posts_index: スレッド一覧
+      submit: 投稿
+      teams_index: チーム一覧
+      title: スレッド詳細
