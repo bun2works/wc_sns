@@ -8,7 +8,7 @@ class Team < ApplicationRecord
   has_many :comments, dependent: :destroy
   validates :name, presence: true, length: {maximum: 30}, uniqueness: true
   validates :representative, presence: true, length: {maximum: 20}
-  validates :homepage, length: {maximum: 100}, uniqueness: true
+  validates :homepage, length: {maximum: 100}
   validates :location_and_day, presence: true, length: {maximum: 50}
   validates :introduction, presence: true, length: {maximum: 100}
   validate :image_check
