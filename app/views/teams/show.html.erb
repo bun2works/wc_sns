@@ -31,7 +31,7 @@
         <p>Ｈ　Ｐ: <%= link_to @team.homepage, @team.homepage, target: :_blank %></p>
       </div>
     </div>
-    <h4 class="mb-4"><%= t ".title" %></h4>
+    <h4 class="mb-4"><%= t ".team_posts" %></h4>
     <div class="mb-5">
       <%= render partial: "teams/post", collection: @posts %>
       <%= paginate @posts %>
