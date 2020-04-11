@@ -50,3 +50,5 @@ production:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+production:
+  adapter: postgresql
