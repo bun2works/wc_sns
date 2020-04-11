@@ -1,4 +1,4 @@
-<div class="container-fluid mb-5">
+<div class="container-fluid">
   <div class="row justify-content-center mt-5 mb-4">
     <%= link_to t(".title"), teams_path, class: "btn-lg btn-primary col-3 text-center" %>
     <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
@@ -22,5 +22,5 @@
       </div>
     <% end %>
   </div>
-  <div class="my-4"><%= paginate @teams %></div>
+  <div class="my-5"><%= paginate @teams %></div>
 </div>
