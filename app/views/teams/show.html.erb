@@ -1,13 +1,13 @@
 <div class="container-fluid">
   <div class="row justify-content-center mt-5 mb-4">
     <%= link_to t(".teams_index"), teams_path, class: "btn-lg btn-secondary col-3 text-center" %>
-    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
-    <div class="btn-lg btn-primary col-3 text-center"><%= t(".title") %></div>
+    <div class="btn-lg btn-primary col-3 text-center mx-1"><%= t(".title") %></div>
+    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center" %>
   </div>
 
   <div class="col-lg-10 mx-auto">
     <div class="row my-5">
-      <div class="col-4">
+      <div class="col-12 col-md-4">
         <% if @team.image.attached? %>
           <%= image_tag @team.image.variant(resize_to_fill: [600, 400]).processed, class: "img-fluid rounded shadow mb-2" %>
         <% else %>
@@ -15,20 +15,35 @@
         <% end %>
         <div>
           <% if @team.id == current_team.id %>
-            <%= link_to t(".edit"), edit_team_registration_path(@team), class: "btn-sm btn-block btn-primary text-center" %>
+            <%= link_to t(".edit"), edit_team_registration_path(@team), class: "btn-sm btn-block btn-primary text-center mb-5" %>
           <% end %>
         </div>
       </div>  
 
-      <div class="container col-8">
+      <div class="container col-12 col-md-8">
         <h3 class="mb-4"><%= @team.name %></h3>
-        <p>代表者: <%= @team.representative %></p>
-        <div class="row col-12">
-          <p>詳　細:</p>
-          <p><%= simple_format (@team.introduction), class: "ml-1" %></p>
+        <div class="row">
+          <p class="col-2 pr-0">代表者:</p>
+          <%= simple_format (@team.representative), class: "col-10 pl-0" %>
         </div>
-        <p>活動日: <%= @team.location_and_day %></p>
-        <p>Ｈ　Ｐ: <%= link_to @team.homepage, @team.homepage, target: :_blank %></p>
+        <div class="row">
+          <p class="col-2 pr-0">詳　細:</p>
+          <%= simple_format (@team.introduction), class: "col-10 pl-0" %>
+        </div>
+        <div class="row">
+          <p class="col-2 pr-0">活動日:</p>
+          <%= simple_format (@team.location_and_day), class: "col-10 pl-0" %>
+        </div>
+        <div class="row">
+          <p class="col-2 pr-0">Ｈ　Ｐ:</p>
+          
+          <% if @team.homepage.present? %>
+            <%= link_to t(".team_hp"), @team.homepage, target: :_blank, class: "pl-0" %>
+          <% else %>
+            <p>未設定</p>
+          <% end %>
+          
+        </div>
       </div>
     </div>
     <h4 class="mb-4"><%= t ".team_posts" %></h4>

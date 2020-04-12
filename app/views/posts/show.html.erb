@@ -1,8 +1,8 @@
 <div class="container-fluid">
   <div class="row justify-content-center mt-5 mb-4">
     <%= link_to t(".teams_index"), teams_path, class: "btn-lg btn-secondary col-3 text-center" %>
-    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
-    <div class="btn-lg btn-primary col-3 text-center"><%= t(".title") %></div>
+    <div class="btn-lg btn-primary col-3 text-center mx-1"><%= t(".title") %></div>
+    <%= link_to t(".posts_index"), posts_path, class: "btn-lg btn-secondary col-3 text-center" %>
   </div>
 
   <div class="container-fuluid">
@@ -40,7 +40,7 @@
             <% else %>
               <i class="fas fa-user-circle fa-2x mr-1"></i>
             <% end %>
-            <%= comment.team.name %>
+            <%= link_to comment.team.name %>
           </div>
           <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
         </div>

@@ -19,7 +19,7 @@
             <% else %>
               <i class="fas fa-user-circle fa-2x mr-1"></i>
             <% end %>
-          <%= comment.team.name %>
+          <%= link_to comment.team.name %>
         </div>
         <%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
       </div>

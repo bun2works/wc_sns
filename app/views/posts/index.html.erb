@@ -1,8 +1,8 @@
 <div class="container-fluid mb-5">
   <div class="row justify-content-center mt-5 mb-4">
     <%= link_to t(".teams_index"), teams_path, class: "btn-lg btn-secondary col-3 text-center" %>
-    <%= link_to t(".title"), posts_path, class: "btn-lg btn-primary col-3 text-center mx-1" %>
-    <%= link_to t(".create_post"), new_post_path, class: "btn-lg btn-secondary col-3 text-center" %>
+    <%= link_to t(".create_post"), new_post_path, class: "btn-lg btn-secondary col-3 text-center mx-1" %>
+    <%= link_to t(".title"), posts_path, class: "btn-lg btn-primary col-3 text-center" %>
   </div>
   
   <%= render "shared/errors", obj: @comment %>
